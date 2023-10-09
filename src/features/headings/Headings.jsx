@@ -5,50 +5,132 @@ const Headings = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.headings.currentPage);
 
-  const active = "active=background";
-  const completed = "completed=background";
+  const active = "booking__container__items-circle active-background";
+  const deactive = "booking__container__items-circle deactive-background";
+  const completed = "booking__container__items-circle completed-background";
+  const completedImg = "circle-img";
+
   return (
-    <div class="booking__container-headings">
-      <div class="booking__container-items">
-        <div class="booking__container-item-1">
-          <div
-            class={`booking__container__items-circle ${
-              currentPage == 1 ? "active-background" : "completed-background"
-            }`}
-          >
+    <div className="booking__container-headings">
+      <div className="booking__container-items">
+        <div className="booking__container-item-1">
+          <div className={currentPage === 1 ? active : completed}>
             <img
-              class={`circle-img ${currentPage == 1 ? "hidden" : ""}`}
-              src="/assets//img/Path.png"
+              className={currentPage === 1 ? "hidden" : completedImg}
+              src="/assets/img/Path.png"
               alt=""
             />
-            <span class={`heading-number ${currentPage == 1 ? "" : "hidden"}`}>
+            <span
+              className={`heading-number ${currentPage === 1 ? "" : "hidden"}`}
+            >
               1
             </span>
           </div>
-          <p id="active" class="booking__container__items-name active">
+          <p
+            id="active"
+            className={`booking__container__items-name ${
+              currentPage === 1
+                ? "active"
+                : currentPage < 2
+                ? "deactive"
+                : "completed"
+            }`}
+          >
             Staff
           </p>
         </div>
-        <div class="booking__container-item-2">
-          <div class="booking__container__items-circle deactive-background">
-            <img class="hidden" src="/assets//img/Path.png" alt="" />
-            <span>2</span>
+        <div className="booking__container-item-2">
+          <div
+            className={
+              currentPage === 2
+                ? active
+                : currentPage < 2
+                ? deactive
+                : completed
+            }
+          >
+            <img
+              className={currentPage > 2 ? completedImg : "hidden"}
+              src="/assets/img/Path.png"
+              alt="completed"
+            />
+            <span className={`heading-number ${currentPage > 2 && "hidden"}`}>
+              2
+            </span>
           </div>
-          <p class="booking__container__items-name deactive">Service</p>
+          <p
+            className={`booking__container__items-name ${
+              currentPage === 2
+                ? "active"
+                : currentPage < 2
+                ? "deactive"
+                : "completed"
+            }`}
+          >
+            Service
+          </p>
         </div>
-        <div class="booking__container-item-3 deactive">
-          <div class="booking__container__items-circle deactive-background">
-            <img class="hidden" src="/assets//img/Path.png" alt="" />
-            <span>3</span>
+        <div className="booking__container-item-3">
+          <div
+            className={
+              currentPage === 3
+                ? active
+                : currentPage < 3
+                ? deactive
+                : completed
+            }
+          >
+            <img
+              className={currentPage > 3 ? completedImg : "hidden"}
+              src="/assets/img/Path.png"
+              alt="completed"
+            />
+            <span className={`heading-number ${currentPage > 3 && "hidden"}`}>
+              3
+            </span>
           </div>
-          <p class="booking__container__items-name deactive">Date & Time</p>
+          <p
+            className={`booking__container__items-name ${
+              currentPage === 3
+                ? "active"
+                : currentPage < 3
+                ? "deactive"
+                : "completed"
+            }`}
+          >
+            Date & Time
+          </p>
         </div>
-        <div class="booking__container-item-3">
-          <div class="booking__container__items-circle deactive-background">
-            <img class="hidden" src="/assets//img/Path.png" alt="" />
-            <span>4</span>
+        <div className="booking__container-item-4">
+          <div
+            className={
+              currentPage === 4
+                ? active
+                : currentPage < 4
+                ? deactive
+                : completed
+            }
+          >
+            <img
+              className={currentPage > 4 ? completedImg : "hidden"}
+              src="/assets/img/Path.png"
+              alt="completed"
+            />
+            <span className={`heading-number ${currentPage > 4 && "hidden"}`}>
+              4
+            </span>
           </div>
-          <p class="booking__container__items-name deactive">Confirmation </p>
+          <p
+            className={`booking__container__items-name ${
+              currentPage === 4
+                ? "active"
+                : currentPage < 4
+                ? "deactive"
+                : "completed"
+            }`}
+          >
+            Confirmation
+          </p>
         </div>
       </div>
     </div>
