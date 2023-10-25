@@ -1,8 +1,25 @@
 import React from "react";
 
-const ServiceItem = ({ name, duration, price, img }) => {
+const ServiceItem = ({
+  name,
+  duration,
+  price,
+  img,
+  id,
+  handleServiceSelection,
+  isSelected,
+}) => {
+  const handleServiceClick = () => {
+    handleServiceSelection(id);
+    console.log(isSelected);
+  };
   return (
-    <div class="service-card booking__container-staff_card">
+    <div
+      onClick={handleServiceClick}
+      className={`service-card booking__container-staff_card ${
+        isSelected && " green-border"
+      }`}
+    >
       <div class="booking__container__staff_card-img">
         <img src={`/assets/img/${img}`} alt="doctor" />
       </div>

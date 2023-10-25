@@ -33,7 +33,11 @@ const DateTime = () => {
     for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
       if (day === 4 || day === 5 || day === 6) {
         days.push(
-          <div key={`day-selected-${day}`} className="day-selected">
+          <div
+            onClick={(e) => {}}
+            key={`day-selected-${day}`}
+            className="day-selected  "
+          >
             {day}
           </div>
         );

@@ -1,16 +1,31 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const StaffItem = ({ name, mail, img }) => {
+const StaffItem = ({
+  name,
+  email,
+  img,
+  id,
+  isSelected,
+  handleStaffSelection,
+}) => {
+  const handleItemClick = () => {
+    handleStaffSelection(id);
+  };
+
   return (
-    <div class="booking booking__container-staff_card">
-      <div class="booking__container__staff_card-img">
+    <div
+      onClick={handleItemClick}
+      className={`booking booking__container-staff_card ${
+        isSelected && "green-border"
+      }`}
+    >
+      <div className="booking__container__staff_card-img">
         <img src={`/assets/img/${img}`} alt="doctor" />
       </div>
-      <div class="booking__container-description">
-        <span class="booking__container-staff_card-name">Alex Rosetta</span>
-        <span class="booking__container-staff_card-mail">
-          alexyrosetta@gmail.com
-        </span>
+      <div className="booking__container-description">
+        <span className="booking__container-staff_card-name">{name}</span>
+        <span className="booking__container-staff_card-mail">{email}</span>
       </div>
     </div>
   );
