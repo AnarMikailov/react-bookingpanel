@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const DateTime = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [activeDay, setActiveDay] = useState("");
   const monthNames = [
     "January",
     "February",
@@ -26,15 +27,25 @@ const DateTime = () => {
 
     const days = [];
 
+    const handleClick = () => {};
+
     for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
       days.push(<div key={`empty-${i}`} className="empty-day"></div>);
     }
 
     for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
-      if (day === 4 || day === 5 || day === 6) {
+      if (day === +activeDay) {
+        days.push(
+          <div key={`day-selected-${day}`} className="day-selected active-day ">
+            {day}
+          </div>
+        );
+      } else if (day === 4 || day === 5 || day === 6) {
         days.push(
           <div
-            onClick={(e) => {}}
+            onClick={(e) => {
+              setActiveDay(e.target.textContent);
+            }}
             key={`day-selected-${day}`}
             className="day-selected  "
           >
